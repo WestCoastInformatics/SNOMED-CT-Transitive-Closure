@@ -23,12 +23,12 @@ echo "user =       $user" >> mysql.log 2>&1
 echo "db_name =    $db_name" >> mysql.log 2>&1
 
 echo "    Create and load tables ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_tables.sql >> mysql.log 2>&1
+"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_tc_table.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 
 if [ $ef -ne 1 ]; then
 echo "    Create views ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_views.sql >> mysql.log 2>&1
+"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_tc_view.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 fi
 

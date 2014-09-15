@@ -21,7 +21,7 @@ echo tns_name =    %tns_name% >> oracle.log 2>&1
 set error=0
 
 echo     Create tables >> oracle.log 2>&1
-echo @oracle_tables.sql|%ORACLE_HOME%\bin\sqlplus %user%/%password%@%tns_name%  >> oracle.log 2>&1
+echo @oracle_tc_table.sql|%ORACLE_HOME%\bin\sqlplus %user%/%password%@%tns_name%  >> oracle.log 2>&1
 IF %ERRORLEVEL% NEQ 0 (set error=1
 goto trailer)
 
@@ -31,7 +31,7 @@ IF %ERRORLEVEL% NEQ 0 (set error=1)
 type concept.log >> oracle.log
 
 echo     Create views >> oracle.log 2>&1
-echo @oracle_views.sql|%ORACLE_HOME%\bin\sqlplus %user%/%password%@%tns_name%  >> oracle.log 2>&1
+echo @oracle_tc_view.sql|%ORACLE_HOME%\bin\sqlplus %user%/%password%@%tns_name%  >> oracle.log 2>&1
 IF %ERRORLEVEL% NEQ 0 (set error=1
 goto trailer)
 

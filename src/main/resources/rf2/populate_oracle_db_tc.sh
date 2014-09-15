@@ -25,7 +25,7 @@ echo "user =        $user" >> oracle.log 2>&1
 echo "tns_name =    $tns_name" >> oracle.log 2>&1
 
 echo "    Create tables ... `/bin/date`" >> oracle.log 2>&1
-echo "@oracle_tables.sql"|$ORACLE_HOME/bin/sqlplus $user/$password@$tns_name  >> oracle.log 2>&1
+echo "@oracle_tc_table.sql"|$ORACLE_HOME/bin/sqlplus $user/$password@$tns_name  >> oracle.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
  
 if [ $ef -ne 1 ]; then
@@ -37,7 +37,7 @@ fi
 
 if [ $ef -ne 1 ]; then
 echo "    Create views ... `/bin/date`" >> oracle.log 2>&1
-echo "@oracle_views.sql"|$ORACLE_HOME/bin/sqlplus $user/$password@$tns_name  >> oracle.log 2>&1
+echo "@oracle_tc_view.sql"|$ORACLE_HOME/bin/sqlplus $user/$password@$tns_name  >> oracle.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 fi
 
