@@ -27,12 +27,6 @@ echo "    Create and load tables ... `/bin/date`" >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 
 if [ $ef -ne 1 ]; then
-echo "    Create indexes ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_indexes.sql >> mysql.log 2>&1
-if [ $? -ne 0 ]; then ef=1; fi
-fi
-
-if [ $ef -ne 1 ]; then
 echo "    Create views ... `/bin/date`" >> mysql.log 2>&1
 "$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_views.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi

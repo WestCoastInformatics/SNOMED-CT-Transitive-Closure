@@ -24,11 +24,6 @@ echo     Create and load tables >> mysql.log 2>&1
 IF %ERRORLEVEL% NEQ 0 (set error=1
 goto trailer)
 
-echo     Create indexes >> mysql.log 2>&1
-"%MYSQL_HOME%\bin\mysql" -vvv -u %user% -p%password% --local-infile=1 %db_name% < mysql_indexes.sql >> mysql.log 2>&1
-IF %ERRORLEVEL% NEQ 0 (set error=1
-goto trailer)
-
 echo     Create views >> mysql.log 2>&1
 "%MYSQL_HOME%\bin\mysql" -vvv -u %user% -p%password% --local-infile=1 %db_name% < mysql_views.sql >> mysql.log 2>&1
 IF %ERRORLEVEL% NEQ 0 (set error=1
@@ -47,4 +42,5 @@ echo Finished ...  >> mysql.log 2>&1
 date /T >> mysql.log 2>&1
 time /T >> mysql.log 2>&1
 echo ---------------------------------------- >> mysql.log 2>&1
+pause
 exit %retval%
