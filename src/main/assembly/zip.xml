@@ -11,5 +11,10 @@
             <filtered>true</filtered>
             <lineEnding>keep</lineEnding>
         </fileSet>
+        <fileSet>
+            <directory>target/classes</directory>
+            <outputDirectory>/</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
     </fileSets>
 </assembly>
