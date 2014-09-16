@@ -7,11 +7,15 @@ Important Notes
 ---------------
 * This code is configured to work with the ${editionVersion}
   SNOMEDCT ${editionLabel} Edition.
+* NOTE: RF1 and RF2 produce different results mostly due to
+        the differing use of metadata concepts between the
+        two formats.  For RF1, relationships for inactive
+        concepts are left out of the computation.
 
 Key Features
 ------------
-* Builds transitive closure table from an RF2, snapshot, inferred, SNOMED file.
-  * For RF1 support, contact info@westcoastinformatics.com
+* Builds transitive closure table from an RF1 or an RF2, 
+  snapshot, inferred, SNOMED file.
 * Support for Oracle and MySQL
 * Views with denormalized concept preferred names
 

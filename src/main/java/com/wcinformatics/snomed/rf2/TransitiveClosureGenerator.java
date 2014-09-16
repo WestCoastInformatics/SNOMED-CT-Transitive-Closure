@@ -12,7 +12,7 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-*/
+ */
 package com.wcinformatics.snomed.rf2;
 
 import java.io.BufferedReader;
@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -29,8 +30,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Builder for a transitive closure table from SNOMED CT
- * RF2 Snapshot inferred relationships file.
+ * Builder for a transitive closure table from SNOMED CT RF2 Snapshot inferred
+ * relationships file.
  *
  * @author bcarlsen@westcoastinformatics.com
  */
@@ -51,6 +52,18 @@ public class TransitiveClosureGenerator {
   /** The root. */
   private String root = "138875005";
 
+  /**  The rf1 inactive concepts. */
+  private String[] rf1InactiveConcepts = new String[] { 
+      "362955004",
+      "363660007",
+      "363661006",
+      "363662004",
+      "363663009",
+      "363664003",
+      "370126003",
+      "443559000"
+  };
+  
   /**
    * Instantiates an empty {@link TransitiveClosureGenerator}.
    */
@@ -93,6 +106,15 @@ public class TransitiveClosureGenerator {
   public void setRoot(String root) {
     this.root = root;
   }
+
+  /**
+   * Sets the rf1 inactive concepts.
+   *
+   * @param rf1InactiveConcepts the rf1InactiveConcepts to set
+   */
+  public void setRf1InactiveConcepts(String[] rf1InactiveConcepts) {
+    this.rf1InactiveConcepts = rf1InactiveConcepts;
+  }  
 
   /**
    * Compute the transitive closure file.
@@ -141,27 +163,78 @@ public class TransitiveClosureGenerator {
     Map<String, Set<String>> parChd = new HashMap<>();
     // skip header
     line = in.readLine();
+    boolean rf1 = false;
+    if (line.startsWith("RELATIONSHIPID")) {
+      Logger.getLogger(this.getClass().getName()).log(Level.INFO,
+          "    file format = RF1");
+      rf1 = true;
+    } else if (line.startsWith("id")) {
+      Logger.getLogger(this.getClass().getName()).log(Level.INFO,
+          "    file format = RF2");
+    } else {
+      throw new Exception("Unknown file format, not RF1 or RF2.");
+    }
     int ct = 0;
     while ((line = in.readLine()) != null) {
       String[] tokens = line.split("\t");
-      if (tokens.length != 10) {
-        throw new Exception("Unexpected number of fields in rels file "
-            + tokens.length);
+
+      String chd = null;
+      String par = null;
+
+      // Handle RF1
+      if (rf1) {
+
+        if (tokens.length != 7) {
+          throw new Exception("Unexpected number of fields in rels file "
+              + tokens.length);
+        }
+        // Skip non isa
+        if (!isaRel.equals(tokens[2])) {
+          continue;
+        }
+        // Skip inactive - n/a all RF1 rels are active
+
+        // skip non inferred rels - n/a all RF1 rels are inferred
+
+        // skip non defining relationships
+        if (!tokens[4].equals("0")){
+          continue;
+        }
+        
+        // skip children of "inactive concept" concept
+        int i = Arrays.binarySearch(rf1InactiveConcepts, tokens[3]);
+        if (i >= 0 ) {
+          continue;
+        }
+        
+        chd = tokens[1];
+        par = tokens[3];
       }
-      // Skip non isa
-      if (!isaRel.equals(tokens[7])) {
-        continue;
+
+      // Handle RF2
+      else {
+
+        if (tokens.length != 10) {
+          throw new Exception("Unexpected number of fields in rels file "
+              + tokens.length);
+        }
+        // Skip non isa
+        if (!isaRel.equals(tokens[7])) {
+          continue;
+        }
+        // Skip inactive
+        if (!tokens[2].equals("1")) {
+          continue;
+        }
+        // skip non inferred rels
+        if (!inferredCharType.equals(tokens[8])) {
+          throw new Exception("Unexpected non inferred relationship");
+        }
+        chd = tokens[4];
+        par = tokens[5];
       }
-      // Skip inactive
-      if (!tokens[2].equals("1")) {
-        continue;
-      }
-      // skip non inferred rels
-      if (!inferredCharType.equals(tokens[8])) {
-        throw new Exception("Unexpected non inferred relationship");
-      }
-      String par = tokens[5];
-      String chd = tokens[4];
+
+      // Add par/chd relationship
       if (par == null || par.isEmpty()) {
         throw new Exception("Empty parent " + line);
       }
@@ -173,6 +246,7 @@ public class TransitiveClosureGenerator {
       }
       Set<String> children = parChd.get(par);
       children.add(chd);
+
       ct++;
     }
     Logger.getLogger(this.getClass().getName()).log(Level.INFO,
@@ -186,7 +260,7 @@ public class TransitiveClosureGenerator {
     for (String code : parChd.keySet()) {
       Logger.getLogger(this.getClass().getName()).log(Level.FINE,
           "      compute for " + code);
-      
+
       if (root.equals(code)) {
         continue;
       }
@@ -194,7 +268,7 @@ public class TransitiveClosureGenerator {
       Set<String> descs = getDescendants(code, new HashSet<String>(), parChd);
       for (String desc : descs) {
         Logger.getLogger(this.getClass().getName()).log(Level.FINEST,
-          code + "\t" + desc + "\r\n");
+            code + "\t" + desc + "\r\n");
         out.print(code + "\t" + desc + "\r\n");
         out.flush();
       }
@@ -267,5 +341,6 @@ public class TransitiveClosureGenerator {
       System.exit(1);
     }
   }
+
 
 }
