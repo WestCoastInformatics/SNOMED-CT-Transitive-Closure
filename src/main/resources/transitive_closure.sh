@@ -20,6 +20,7 @@ echo "outputFile = $outputFile" >> transitive_closure.log 2>&1
 # NOTE: if this fails, make sure java is in the path
 #       or edit it to use the full path to java executable
 echo "    Build transitive closure table ... `/bin/date`" >> transitive_closure.log 2>&1
+/bin/rm -f $outputFile
 java -cp . com.wcinformatics.snomed.rf2.TransitiveClosureGenerator $relsFile $outputFile
 if [ $? -ne 0 ]; then ef=1; fi
 

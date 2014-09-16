@@ -152,6 +152,10 @@ public class TransitiveClosureGenerator {
       if (!isaRel.equals(tokens[7])) {
         continue;
       }
+      // Skip inactive
+      if (!tokens[2].equals("1")) {
+        continue;
+      }
       // skip non inferred rels
       if (!inferredCharType.equals(tokens[8])) {
         throw new Exception("Unexpected non inferred relationship");

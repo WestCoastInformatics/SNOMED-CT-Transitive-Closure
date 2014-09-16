@@ -19,6 +19,7 @@ set error=0
 :: NOTE: if this fails, make sure java is in the path
 ::       or edit it to use the full path to java executable
 echo     Build transitive closure table >> transitive_closure.log 2>&1
+del /Q %outputFile%
 java -cp . com.wcinformatics.snomed.rf2.TransitiveClosureGenerator %relsFile% %outputFile%
 IF %ERRORLEVEL% NEQ 0 (set error=1
 goto trailer)
