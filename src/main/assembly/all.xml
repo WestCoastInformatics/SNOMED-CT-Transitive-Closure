@@ -1,0 +1,20 @@
+<assembly>
+  <id>all</id>
+  <baseDirectory>/</baseDirectory>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory>/</outputDirectory>
+      <filtered>true</filtered>
+      <lineEnding>keep</lineEnding>
+    </fileSet>
+    <fileSet>
+      <directory>target/classes</directory>
+      <outputDirectory>/</outputDirectory>
+      <filtered>false</filtered>
+    </fileSet>
+  </fileSets>
+</assembly>
