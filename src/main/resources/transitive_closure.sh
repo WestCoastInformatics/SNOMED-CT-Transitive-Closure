@@ -3,8 +3,15 @@
 # Configurable parameters
 # Please edit these variables to reflect your environment
 #
-relsFile=/data/SNOMED/SnomedCT_Release_${editionLabel}_${editionVersion}/RF2Release/Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
-outputFile = /data/SNOMED/SnomedCT_Release_${editionLabel}_${editionVersion}/RF2Release/Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
+
+
+# Configure for RF1
+#relsFile = Terminology/Content/sct1_Relationships_${editionType}_${editionLabel}_${editionVersion}.txt
+#outputFile = Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt
+
+# Configure for RF2
+relsFile = Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
+outputFile = Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
 
 /bin/rm -f transitive_closure.log
 touch transitive_closure.log
@@ -21,7 +28,7 @@ echo "outputFile = $outputFile" >> transitive_closure.log 2>&1
 #       or edit it to use the full path to java executable
 echo "    Build transitive closure table ... `/bin/date`" >> transitive_closure.log 2>&1
 /bin/rm -f $outputFile
-java -cp . com.wcinformatics.snomed.rf2.TransitiveClosureGenerator $relsFile $outputFile
+java -cp . com.wcinformatics.snomed.TransitiveClosureGenerator $relsFile $outputFile
 if [ $? -ne 0 ]; then ef=1; fi
 
 echo "----------------------------------------" >> transitive_closure.log 2>&1

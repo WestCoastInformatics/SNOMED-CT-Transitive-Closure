@@ -13,7 +13,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
  */
-package com.wcinformatics.snomed.rf2;
+package com.wcinformatics.snomed;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,8 +30,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Builder for a transitive closure table from SNOMED CT RF2 Snapshot inferred
- * relationships file.
+ * Builder for a transitive closure table from SNOMED CT inferred relationships
+ * file.
  *
  * @author bcarlsen@westcoastinformatics.com
  */
@@ -52,18 +52,12 @@ public class TransitiveClosureGenerator {
   /** The root. */
   private String root = "138875005";
 
-  /**  The rf1 inactive concepts. */
-  private String[] rf1InactiveConcepts = new String[] { 
-      "362955004",
-      "363660007",
-      "363661006",
-      "363662004",
-      "363663009",
-      "363664003",
-      "370126003",
-      "443559000"
+  /** The rf1 inactive concepts. */
+  private String[] rf1InactiveConcepts = new String[] {
+      "362955004", "363660007", "363661006", "363662004", "363663009",
+      "363664003", "370126003", "443559000"
   };
-  
+
   /**
    * Instantiates an empty {@link TransitiveClosureGenerator}.
    */
@@ -114,7 +108,7 @@ public class TransitiveClosureGenerator {
    */
   public void setRf1InactiveConcepts(String[] rf1InactiveConcepts) {
     this.rf1InactiveConcepts = rf1InactiveConcepts;
-  }  
+  }
 
   /**
    * Compute the transitive closure file.
@@ -122,6 +116,10 @@ public class TransitiveClosureGenerator {
    * @throws Exception the exception
    */
   public void compute() throws Exception {
+
+    //
+    // Check assumptions/prerequisites
+    //
     Logger.getLogger(this.getClass().getName()).log(Level.INFO,
         "Start computing transitive closure ... " + new Date());
 
@@ -197,16 +195,16 @@ public class TransitiveClosureGenerator {
         // skip non inferred rels - n/a all RF1 rels are inferred
 
         // skip non defining relationships
-        if (!tokens[4].equals("0")){
+        if (!tokens[4].equals("0")) {
           continue;
         }
-        
+
         // skip children of "inactive concept" concept
         int i = Arrays.binarySearch(rf1InactiveConcepts, tokens[3]);
-        if (i >= 0 ) {
+        if (i >= 0) {
           continue;
         }
-        
+
         chd = tokens[1];
         par = tokens[3];
       }
@@ -251,6 +249,7 @@ public class TransitiveClosureGenerator {
     }
     Logger.getLogger(this.getClass().getName()).log(Level.INFO,
         "      ct = " + ct);
+
     //
     // Write transitive closure file
     //
@@ -325,8 +324,8 @@ public class TransitiveClosureGenerator {
 
   /**
    * Application entry point. The first parameter should be the path to a
-   * snapshot inferred RF2 relationships file. The second parameter should be
-   * the output filename and should not yet exist.
+   * snapshot inferred RF2 relationships or RF1 relationships file. The second
+   * parameter should be the output filename and should not yet exist.
    *
    * @param argv the command line arguments
    */
@@ -341,6 +340,5 @@ public class TransitiveClosureGenerator {
       System.exit(1);
     }
   }
-
 
 }

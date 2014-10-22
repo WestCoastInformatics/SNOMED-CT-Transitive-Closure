@@ -16,5 +16,9 @@
       <outputDirectory>/</outputDirectory>
       <filtered>false</filtered>
     </fileSet>
+    <fileSet>
+      <directory>src/main/java</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
   </fileSets>
 </assembly>

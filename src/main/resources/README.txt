@@ -11,6 +11,9 @@ Important Notes
         the differing use of metadata concepts between the
         two formats.  For RF1, relationships for inactive
         concepts are left out of the computation.
+* NOTE: the database load scripts have not been comprehensively
+        tested so be aware that they may not work 100% out of the box.
+
 
 Key Features
 ------------

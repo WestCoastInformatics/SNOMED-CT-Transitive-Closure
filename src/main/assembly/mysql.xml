@@ -16,8 +16,16 @@
       <lineEnding>keep</lineEnding>
     </fileSet>
     <fileSet>
+      <directory>src/main/java</directory>
+      <outputDirectory>/</outputDirectory>
+    </fileSet>
+    <fileSet>
       <directory>target/classes</directory>
       <outputDirectory>/</outputDirectory>
+      <includes>
+        <include>**/*class</include>
+        <include>**/*java</include>
+      </includes>
       <filtered>false</filtered>
     </fileSet>
   </fileSets>
