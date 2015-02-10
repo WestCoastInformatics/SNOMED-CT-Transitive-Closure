@@ -6,8 +6,8 @@
 
 
 # Configure for RF1
-#relsFile = Terminology/Content/sct1_Relationships_${editionType}_${editionLabel}_${editionVersion}.txt
-#outputFile = Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt
+#relsFile = Terminology/Content/sct1_Relationships_Core_${editionLabel}_${editionVersion}.txt
+#outputFile = Terminology/Content/sct1_TransitiveClosure_Core_${editionLabel}_${editionVersion}.txt
 
 # Configure for RF2
 relsFile = Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt

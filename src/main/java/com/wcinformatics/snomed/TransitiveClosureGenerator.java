@@ -255,6 +255,8 @@ public class TransitiveClosureGenerator {
     //
     Logger.getLogger(this.getClass().getName()).log(Level.INFO,
         "    Write transitive closure table ... " + new Date());
+    // print header line
+    out.print("superTypeId\tsubTypeId\r\n");
     ct = 0;
     for (String code : parChd.keySet()) {
       Logger.getLogger(this.getClass().getName()).log(Level.FINE,

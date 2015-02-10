@@ -2,8 +2,15 @@
 :: Configurable parameters
 :: Please edit these variables to reflect your environment
 ::
-set relsFile=c:/data/SNOMED/SnomedCT_Release_${editionLabel}_${editionVersion}/RF2Release/Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
-set outputFile = c:/data/SNOMED/SnomedCT_Release_${editionLabel}_${editionVersion}/RF2Release/Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
+
+:: Configure for RF1
+:: set relsFile=Terminology/Content/sct1_Relationships_Core_${editionLabel}_${editionVersion}.txt
+:: set outputFile=Terminology/Content/sct1_TransitiveClosure_Core_${editionLabel}_${editionVersion}.txt
+
+:: Configure for RF2
+set relsFile=Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
+set outputFile=Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
+
 
 del transitive_closure.log
 echo. > transitive_closure.log

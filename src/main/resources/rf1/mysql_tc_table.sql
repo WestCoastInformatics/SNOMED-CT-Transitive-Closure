@@ -15,9 +15,9 @@ CREATE TABLE transitiveclosure (
     FOREIGN KEY (subTypeId) REFERENCES concept(id)
 ) CHARACTER SET utf8;
 
-LOAD DATA LOCAL INFILE 'Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt' INTO TABLE concept LINES TERMINATED BY '\r\n' IGNORE 1 LINES
+LOAD DATA LOCAL INFILE 'Terminology/Content/sct1_TransitiveClosure_Core_${editionLabel}_${editionVersion}.txt' INTO TABLE transitiveclosure LINES TERMINATED BY '\r\n' IGNORE 1 LINES
 (@superTypeId,@subTypeId)
-SET superTypeId = @superTypeId
+SET superTypeId = @superTypeId,
 subTypeId = @subTypeId;
 
 -- Restore foreign key checks to enforce referential integrity.
