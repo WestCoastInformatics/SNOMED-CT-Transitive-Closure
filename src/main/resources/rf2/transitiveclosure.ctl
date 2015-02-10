@@ -1,7 +1,7 @@
 options (skip=1,direct=true)
 load data
 characterset UTF8 length semantics char
-infile 'Snapshot/Terminology/sct2_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt' "str X'0d0a'"
+infile 'Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt' "str X'0d0a'"
 badfile 'transitiveclosure.bad'
 discardfile 'transitiveclosure.dsc'
 insert

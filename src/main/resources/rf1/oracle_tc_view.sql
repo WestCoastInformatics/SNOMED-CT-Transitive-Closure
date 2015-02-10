@@ -36,12 +36,13 @@ END;
 --       via the standard RF2 load scripts
 EXECUTE drop_view('transitiveclosurewithnames');
 CREATE VIEW transitiveclosurewithnames AS
-SELECT superTypeId, superTypeName, subTypeId, subTypeName
+SELECT superTypeId, cpn1.preferredName superTypeName, 
+       subTypeId, cpn2.preferredName subTypeName
 FROM transitiveclosure a,
     conceptpreferredname cpn1,
     conceptpreferredname cpn2
 WHERE a.superTypeId = cpn1.conceptId 
-  AND a.superTypeId = cpn2.conceptId;
+  AND a.subTypeId = cpn2.conceptId;
 
 -- Clean up helper procedures.
 DROP PROCEDURE drop_view;
