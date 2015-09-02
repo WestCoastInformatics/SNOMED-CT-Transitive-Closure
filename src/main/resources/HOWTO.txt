@@ -22,17 +22,18 @@ Installation
   * SNOMED CT® International Edition Archive Files
     * http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctarchive.html
 
-2. Unzip the transitive closure tools into a folder (ideally the RF2Release or
-   RF1Release folder of the SNOMED CT distribution you are using).
+2. Unzip the transitive closure tools.
 
-3. Edit the transitive_closure script (either .bat or .sh depending on your envrioment)
-  * Set the path to the RF2, snapshot, inferred SNOMED CT relationships file
-    or to the RF1 SNOMED CT relationships file
-  * Set the path to the output file (if using the database load scripts, make sure the
-     output file winds up in the same directory as the input relationships file and
-     with a naming convention consistent with that of the other SNOMED files)
+3.  For the desired format, copy the appropriate scripts 
+    to the release file directory as specified below:
+* To generate transitive closure from RF1, copy the installer scripts from rf1/
+	and paste them into the RF1 directory you unzipped in step 2
+* To generate transitive closure from RF2, copy the installer scripts from rf2/
+	  and paste them into the RF2 directory you unzipped in step 2
 
-4. Run the script and it will generate the transitive closure file.
+4. Run the corresponding .bat or .sh script for your environment and it will 
+   generate the transitive closure file.  See the script for the output file
+   location and name.
 
 Optional Steps - Database Load
 ------------------------------
@@ -41,7 +42,8 @@ PREREQUISITES: The database load script tooling available from
   database loaded.  This is "add on" functionality to an existing load.
 
 1.  Copy the appropriate installer scripts from rf1/ or rf2/
-	and paste them into the RF2Release or RF1Release directory, respectively
+	and paste them into the directory you unpacked SNOMED CT data 
+	files into.
 	
 2.  Set the variables in the script, such as database username/password.
 
@@ -49,8 +51,8 @@ PREREQUISITES: The database load script tooling available from
     appropriate "populate" script.  For example:
   * For MySQL on Windows, use the "populate_mysql_db_tc.bat" script.
   * For Oracle on Windows, use the "populate_oracle_db_tc.bat" script.
-  * For MySQL on Linux/Unix/MacOS, use the "populate_mysql_db-tc.sh" script.
-  * For Oracle on Linux/Unix/MacOS, use the "populate_oracle_db-tc.sh" script.
+  * For MySQL on Linux/Unix/MacOS, use the "populate_mysql_db_tc.sh" script.
+  * For Oracle on Linux/Unix/MacOS, use the "populate_oracle_db_tc.sh" script.
   
 4. Configure the settings at the top of the script for your environment
 

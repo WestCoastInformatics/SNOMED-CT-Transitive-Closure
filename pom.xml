@@ -36,7 +36,7 @@
     <profile>
       <id>US</id>
       <properties>
-        <editionVersion>20150301</editionVersion>
+        <editionVersion>20150901</editionVersion>
         <editionType>National</editionType>
         <editionLabel>US1000124</editionLabel>
       </properties>
@@ -68,7 +68,6 @@
             <descriptor>src/main/assembly/tc.xml</descriptor>
             <descriptor>src/main/assembly/mysql.xml</descriptor>
             <descriptor>src/main/assembly/oracle.xml</descriptor>
-            <descriptor>src/main/assembly/all.xml</descriptor>
           </descriptors>
           <formats>
             <format>zip</format>
