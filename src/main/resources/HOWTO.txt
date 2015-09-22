@@ -13,25 +13,23 @@ default settings at the top of the transitive closure scripts for more info.
 
 Installation
 ------------
-1. Download the SNOMED CT International Release files and unzip into a folder
+1. Download the SNOMED CT Release files
     in ZIP format.  US Users can find the files here:
   * SNOMED CT® US Edition Release Files: 
     * http://www.nlm.nih.gov/research/umls/Snomed/us_edition.html
   * SNOMED CT® International Edition Release Files: 
     * http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
-  * SNOMED CT® International Edition Archive Files
-    * http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctarchive.html
 
-2. Unzip the transitive closure tools.
+2.  Unzip the files into a folder
 
-3.  For the desired format, copy the appropriate scripts 
+3.  Unzip the transitive closure tools to another folder
+
+4.  For the desired format, copy the appropriate installer scripts 
     to the release file directory as specified below:
-* To generate transitive closure from RF1, copy the installer scripts from rf1/
-	and paste them into the RF1 directory you unzipped in step 2
-* To generate transitive closure from RF2, copy the installer scripts from rf2/
-	  and paste them into the RF2 directory you unzipped in step 2
-
-4. Run the corresponding .bat or .sh script for your environment and it will 
+* For RF1, copy the installer scripts from rf1/ to the folder from step 2
+* For RF2, copy the installer scripts from rf2/ to the folder from step 2
+	  
+5. Run the corresponding .bat or .sh script for your environment and it will 
    generate the transitive closure file.  See the script for the output file
    location and name.
 
@@ -41,21 +39,21 @@ PREREQUISITES: The database load script tooling available from
   http://www.westcoastinformatics.com/resources.html has already been run and the
   database loaded.  This is "add on" functionality to an existing load.
 
+0.  This assumes the steps in the previous section have been completed.
+
 1.  Copy the appropriate installer scripts from rf1/ or rf2/
 	and paste them into the directory you unpacked SNOMED CT data 
-	files into.
+	files into.  You may have already completed this from the prior section.
 	
-2.  Set the variables in the script, such as database username/password.
-
-3.  Depending on your platform and database, choose the 
+2.  Depending on your platform and database, choose the 
     appropriate "populate" script.  For example:
-  * For MySQL on Windows, use the "populate_mysql_db_tc.bat" script.
-  * For Oracle on Windows, use the "populate_oracle_db_tc.bat" script.
-  * For MySQL on Linux/Unix/MacOS, use the "populate_mysql_db_tc.sh" script.
-  * For Oracle on Linux/Unix/MacOS, use the "populate_oracle_db_tc.sh" script.
+  * For MySQL on Windows, use the "populate_mysql_db_tc.bat" script
+  * For Oracle on Windows, use the "populate_oracle_db_tc.bat" script
+  * For MySQL on Linux/Unix/MacOS, use the "populate_mysql_db_tc.sh" script
+  * For Oracle on Linux/Unix/MacOS, use the "populate_oracle_db_tc.sh" script
   
-4. Configure the settings at the top of the script for your environment
+3. Configure the settings at the top of the script for your environment
 
-5. Execute the script
+4. Execute the script
   * Note: a complete log file will appear as "mysql.log" or "oracle.log"
   
