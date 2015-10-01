@@ -17,7 +17,7 @@ CREATE TABLE transitiveclosure (
 ) CHARACTER SET utf8;
 
 LOAD DATA LOCAL INFILE 'Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt' INTO TABLE transitiveclosure LINES TERMINATED BY '\r\n' IGNORE 1 LINES
-(@superTypeId,@subTypeId)
+(@superTypeId,@subTypeId,@depth)
 SET superTypeId = @superTypeId,
 subTypeId = @subTypeId,
 depth = @depth;
