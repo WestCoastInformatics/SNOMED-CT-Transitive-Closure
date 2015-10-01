@@ -300,7 +300,7 @@ public class TransitiveClosureGenerator {
 
     // If this is a leaf node, bail
     if (children == null || children.isEmpty()) {
-      return new HashMap<>();
+      return descendants;
     }
 
     // Iterate through children, mark as descendant and recursively call
