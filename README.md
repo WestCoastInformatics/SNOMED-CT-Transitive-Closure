@@ -6,6 +6,10 @@ to create and populate a MYSQL or Oracle database with this data.
 To download a package built for the latest US or International edition, visit
 http://www.westcoastinformatics.com/resources.html
 
+*New feature: a "depth" flag is now computed as well where 0 means "self",
+1 means "child", and >1 means "non-child descendant".  This enables asking
+queries about "child of", "descendant of", and "descendant or self of".
+
 Minimum Specification
 ---------------------
 - Java 1.7

@@ -19,7 +19,8 @@ CREATE TABLE transitiveclosure (
 LOAD DATA LOCAL INFILE 'Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt' INTO TABLE transitiveclosure LINES TERMINATED BY '\r\n' IGNORE 1 LINES
 (@superTypeId,@subTypeId)
 SET superTypeId = @superTypeId,
-subTypeId = @subTypeId;
+subTypeId = @subTypeId,
+depth = @depth;
 
 -- Restore foreign key checks to enforce referential integrity.
 SET FOREIGN_KEY_CHECKS = 1;
