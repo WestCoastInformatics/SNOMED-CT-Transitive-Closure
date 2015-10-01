@@ -161,6 +161,7 @@ public class TransitiveClosureGenerator {
       throw new Exception("Unknown file format, not RF1 or RF2.");
     }
     int ct = 0;
+    Set<String> all = new HashSet<>();
     while ((line = in.readLine()) != null) {
       String[] tokens = line.split("\t");
 
@@ -227,6 +228,11 @@ public class TransitiveClosureGenerator {
       if (chd == null || chd.isEmpty()) {
         throw new Exception("Empty child " + line);
       }
+      // Add to "all"
+      all.add(par);
+      all.add(chd);
+      
+      // Handle par/chd
       if (!parChd.containsKey(par)) {
         parChd.put(par, new HashSet<String>());
       }
@@ -246,7 +252,7 @@ public class TransitiveClosureGenerator {
     // print header line
     out.print("superTypeId\tsubTypeId\tdepth\r\n");
     ct = 0;
-    for (String code : parChd.keySet()) {
+    for (String code : all) {
       Logger.getLogger(this.getClass().getName()).log(Level.FINE,
           "      compute for " + code);
 
