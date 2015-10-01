@@ -37,7 +37,7 @@ END;
 EXECUTE drop_view('transitiveclosurewithnames');
 CREATE VIEW transitiveclosurewithnames AS
 SELECT superTypeId, cpn1.preferredName superTypeName, 
-       subTypeId, cpn2.preferredName subTypeName
+       subTypeId, cpn2.preferredName subTypeName, a.depth
 FROM transitiveclosure a,
     conceptpreferredname cpn1,
     conceptpreferredname cpn2

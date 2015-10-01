@@ -36,6 +36,7 @@ EXECUTE drop_table('transitiveclosure');
 CREATE TABLE transitiveclosure (
     superTypeId NUMERIC(18) NOT NULL,
     subTypeId NUMERIC(18) NOT NULL,
+    dept INTEGER NOT NULL,
     PRIMARY KEY (superTypeId, subTypeId),
     FOREIGN KEY (superTypeId) REFERENCES concept(id),
     FOREIGN KEY (subTypeId) REFERENCES concept(id)

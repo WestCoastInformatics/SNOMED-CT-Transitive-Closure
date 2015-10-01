@@ -10,15 +10,17 @@ DROP TABLE IF EXISTS transitiveclosure;
 CREATE TABLE transitiveclosure (
     superTypeId NUMERIC(18) UNSIGNED NOT NULL,
     subTypeId NUMERIC(18) UNSIGNED NOT NULL,
+    depth INT UNSIGNED NOT NULL,
     PRIMARY KEY (superTypeId, subTypeId),
     FOREIGN KEY (superTypeId) REFERENCES concept(id),
     FOREIGN KEY (subTypeId) REFERENCES concept(id)
 ) CHARACTER SET utf8;
 
 LOAD DATA LOCAL INFILE 'Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt' INTO TABLE transitiveclosure LINES TERMINATED BY '\r\n' IGNORE 1 LINES
-(@superTypeId,@subTypeId)
+(@superTypeId,@subTypeId,@depth)
 SET superTypeId = @superTypeId,
-subTypeId = @subTypeId;
+subTypeId = @subTypeId,
+depth = @depth;
 
 -- Restore foreign key checks to enforce referential integrity.
 SET FOREIGN_KEY_CHECKS = 1;

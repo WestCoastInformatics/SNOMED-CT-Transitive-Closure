@@ -11,5 +11,6 @@ fields terminated by X'09'
 trailing nullcols
 (
     superTypeId INTEGER EXTERNAL,
-    subTypeId INTEGER EXTERNAL
+    subTypeId INTEGER EXTERNAL,
+    depth INTEGER EXTERNAL
 )
