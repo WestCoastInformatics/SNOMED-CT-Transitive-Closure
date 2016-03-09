@@ -4,7 +4,7 @@
 # Database connection parameters
 # Please edit these variables to reflect your environment
 #
-MYSQL_HOME="C:\\Program Files\\MySQL\\MySQL Server 5.6"
+MYSQL_HOME=/usr
 user=root
 password=admin
 db_name=snomed
@@ -23,12 +23,12 @@ echo "user =       $user" >> mysql.log 2>&1
 echo "db_name =    $db_name" >> mysql.log 2>&1
 
 echo "    Create and load tables ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_tc_table.sql >> mysql.log 2>&1
+"$MYSQL_HOME/bin/mysql" -vvv -u $user $password --local-infile $db_name < mysql_tc_table.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 
 if [ $ef -ne 1 ]; then
 echo "    Create views ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user -p$password $db_name < mysql_tc_view.sql >> mysql.log 2>&1
+"$MYSQL_HOME/bin/mysql" -vvv -u $user $password --local-infile $db_name < mysql_tc_view.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 fi
 
