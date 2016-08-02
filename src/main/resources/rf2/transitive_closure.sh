@@ -1,13 +1,13 @@
-#!/bin/sh -f
+#!/bin/bash -f
 #
 # Configurable parameters
 # Please edit these variables to reflect your environment
+#   - Tested on Windows with "Git Bash" shell
 #
 
-
 # Configure defaults for RF2
-relsFile = Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
-outputFile = Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
+relsFile=Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
+outputFile=Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
 
 /bin/rm -f transitive_closure.log
 touch transitive_closure.log

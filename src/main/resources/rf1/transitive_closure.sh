@@ -1,13 +1,13 @@
-#!/bin/sh -f
+#!/bin/bash -f
 #
 # Configurable parameters
 # Please edit these variables to reflect your environment
+#   - Tested on Windows with "Git Bash" shell
 #
 
-
 # Configure defaults for RF1
-relsFile = Terminology/Content/sct1_Relationships_${editionType}_${editionLabel}_${editionVersion}.txt
-outputFile = Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt
+relsFile=Terminology/Content/sct1_Relationships_${editionType}_${editionLabel}_${editionVersion}.txt
+outputFile=Terminology/Content/sct1_TransitiveClosure_${editionType}_${editionLabel}_${editionVersion}.txt
 
 /bin/rm -f transitive_closure.log
 touch transitive_closure.log

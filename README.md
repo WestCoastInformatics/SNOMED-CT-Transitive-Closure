@@ -13,8 +13,8 @@ queries about "child of", "descendant of", and "descendant or self of".
 Minimum Specification
 ---------------------
 - Java 1.7
-- MYSQL v5.5.x
-- Oracle v10.x
+- MYSQL v5.6.x
+- Oracle v11.x
 
 Prerequisites
 -------------

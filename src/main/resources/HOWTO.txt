@@ -29,9 +29,9 @@ Installation
 * For RF1, copy the installer scripts from rf1/ to the folder from step 2
 * For RF2, copy the installer scripts from rf2/ to the folder from step 2
 	  
-5. Run the corresponding .bat or .sh script for your environment and it will 
-   generate the transitive closure file.  See the script for the output file
-   location and name.
+5. Run the corresponding transitive_closure.bat or .sh script for your environment 
+   and it will generate the transitive closure file.  See the script for the 
+   output file location and name.
 
 Optional Steps - Database Load
 ------------------------------
