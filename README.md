@@ -25,21 +25,8 @@ concept names, thus making the transitive closure table more useful.
 
 Installation
 ------------
-1. Download the SNOMED CT International Release files and unzip into a folder
-    in ZIP format.  US Users can find the files here:
-  * SNOMED CT® US Edition Release Files: 
-    * http://www.nlm.nih.gov/research/umls/Snomed/us_edition.html
-  * SNOMED CT® International Edition Release Files: 
-    * http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
-  * SNOMED CT® International Edition Archive Files
-    * http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctarchive.html
-2. Unzip the transitive closure tools into a folder
-3. Edit the transitive_closure script (either .bat or .sh depending on your envrioment)
-  * Set the path to the RF2, snapshot, inferred SNOMED CT relationships file
-  * Set the path to the output file (if using the database load scripts, make sure the
-     output file winds up in the same directory as the input relationships file and
-     with a naming convention consistent with that of the other SNOMED files)
-4. Run the script and it will generate the transitive closure file.
+[See the HOWTO.txt file](../master/HOWTO.txt "HOWTO.txt")
+
 
 Optional Steps - Database Load
 ------------------------------
