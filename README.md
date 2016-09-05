@@ -54,5 +54,11 @@ See Also
 --------
 * src/main/resources/LICENSE.txt
 * src/main/resources/README.txt
+* src/main/resources/HOWTO.txt
 
+TODO
+----
+Next Steps:
+* Better automated QA to validate file sizes against table sizes
+* Better automated QA to validate views have same row count as driving tables
    
