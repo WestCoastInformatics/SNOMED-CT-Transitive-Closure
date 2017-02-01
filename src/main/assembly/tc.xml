@@ -9,6 +9,7 @@
       <directory>src/main/resources</directory>
       <outputDirectory>/</outputDirectory>
       <excludes>
+        <exclude>rf1/**</exclude>
         <exclude>**/*mysql*</exclude>
         <exclude>**/*oracle*</exclude>
         <exclude>**/*.ctl</exclude>
@@ -17,21 +18,10 @@
       <lineEnding>keep</lineEnding>
     </fileSet>
 
-    <!-- Copy code to RF1 directory -->
-    <fileSet>
-      <directory>target/classes</directory>
-      <outputDirectory>/rf1</outputDirectory>
-      <includes>
-        <include>**/*class</include>
-        <include>**/*class</include>
-      </includes>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>src/main/java</directory>
-      <outputDirectory>/rf1</outputDirectory>
-    </fileSet>
-
+    <!-- Copy code to RF1 directory <fileSet> <directory>target/classes</directory> 
+      <outputDirectory>/rf1</outputDirectory> <includes> <include>**/*class</include> <include>**/*class</include> 
+      </includes> <filtered>false</filtered> </fileSet> <fileSet> <directory>src/main/java</directory> 
+      <outputDirectory>/rf1</outputDirectory> </fileSet> -->
     <!-- Copy code to RF2 directory -->
     <fileSet>
       <directory>target/classes</directory>

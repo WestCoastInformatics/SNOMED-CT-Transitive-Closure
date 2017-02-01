@@ -26,7 +26,6 @@ Installation
 
 4.  For the desired format, copy the appropriate installer scripts 
     to the release file directory as specified below:
-* For RF1, copy the installer scripts from rf1/ to the folder from step 2
 * For RF2, copy the installer scripts from rf2/ to the folder from step 2
 	  
 5. Run the corresponding transitive_closure.bat or .sh script for your environment 
@@ -41,7 +40,7 @@ PREREQUISITES: The database load script tooling available from
 
 0.  This assumes the steps in the previous section have been completed.
 
-1.  Copy the appropriate installer scripts from rf1/ or rf2/
+1.  Copy the appropriate installer scripts, e.g. from rf2/
 	and paste them into the directory you unpacked SNOMED CT data 
 	files into.  You may have already completed this from the prior section.
 	
