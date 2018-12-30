@@ -25,7 +25,8 @@ concept names, thus making the transitive closure table more useful.
 
 Installation
 ------------
-[See the HOWTO.txt file](../master/HOWTO.txt "HOWTO.txt")
+* See https://wiki.terminology.tools/display/IHTSDO/SNOMED+Database+Load+Scripts to understand how to prepare the files for publication.
+* See HOWTO.txt file to understand how to load the transitive closure table into a database
 
 
 Optional Steps - Database Load
