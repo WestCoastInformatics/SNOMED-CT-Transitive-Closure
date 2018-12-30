@@ -1,6 +1,6 @@
 <assembly>
   <id>mysql</id>
-  <formats>
+  <baseDirectory>/</baseDirectory>  <formats>
     <format>zip</format>
   </formats>
   <fileSets>
