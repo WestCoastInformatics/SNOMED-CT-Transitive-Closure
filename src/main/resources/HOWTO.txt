@@ -20,9 +20,9 @@ Installation
 ------------
 1.  Download the database loader zip file from the http://www.westcoastinformatics.com/resources.html website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
 	For example:
-		* For MySql SNOMED-CORE, use the "snomed-transitive-closure-mysql.20180731.zip" file
+		* For MySql SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190131.zip" file
 		* For MySql US-Edition, use the "snomed-us-transitive-closure-mysql.20180901.zip" file
-		* For Oracle SNOMED-CORE, use the "snomed-transitive-closure-oracle.20180731.zip" file
+		* For Oracle SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190131.zip" file
 		* For Oracle US-Edition, use the "snomed-us-transitive-closure-oracle.20180901.zip" file
 
 2.  Unzip the contents of the zip file into a 'data' folder
