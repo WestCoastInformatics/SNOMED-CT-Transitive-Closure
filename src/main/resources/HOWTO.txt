@@ -20,10 +20,12 @@ Installation
 ------------
 1.  Download the database loader zip file from the http://www.westcoastinformatics.com/resources.html website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
 	For example:
-		* For MySql SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190131.zip" file
-		* For MySql US-Edition, use the "snomed-us-transitive-closure-mysql.20190301.zip" file
-		* For Oracle SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190131.zip" file
-		* For Oracle US-Edition, use the "snomed-us-transitive-closure-oracle.20190301.zip" file
+		* MySQL
+			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190131.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-mysql.20190301.zip" file
+		* Oracle
+			> SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190131.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-oracle.20190301.zip" file
 
 2.  Unzip the contents of the zip file into a 'data' folder
 
@@ -43,17 +45,28 @@ Installation
 		- one *.bat file
 		- one *.sh file
 
-5.	In a text editor, open the temp-folder's appropriate "populate" script in a text editor as defined by your platform and database. 
+5.	Generate transitive closures
+	In a text editor, open the temp-folder's appropriate "populate" script in a text editor as defined by your platform and database. 
 	* For example:
-		- For MySQL on Windows, use the "populate_mysql_db_tc.bat" script
-		- For Oracle on Windows, use the "transitive_closure.bat" script
-		- For MySQL on Linux/Unix/MacOS, use the "populate_mysql_db_tc.sh" script
-		- For Oracle on Linux/Unix/MacOS, use the "transitive_closure.sh" script
+		- Windows          - use the "transitive_closure.bat" script
+		- Linux/Unix/MacOS - use the "transitive_closure.sh" script
+	* Note: a complete log file will appear as "transitive_closure.log"
+	
+7.	Load transitive closures
+	In a text editor, open the temp-folder's appropriate "populate" script in a text editor as defined by your platform and database. 
+	* For example:
+		- Windows
+			> MySQL  - use the "populate_mysql_db_tc.bat" script
+			> Oracle - use the "populate_oracle_db_tc.bat" script
+		- Linux/Unix/MacOS
+			> MySQL  - use the "populate_mysql_db_tc.sh" script
+			> Oracle - use the "populate_oracle_db_tc.sh" script
+			
 	* Configure settings at the top of the "populate" script for your environment
 		- user  is your database's username
 		- password is your database's password
 		- tns_name or db_name is the database's schema which was used in the prerequisite step
 
-6.	Execute the "populate" script
+8.	Execute the "populate" script
 	* Note: a complete log file will appear as "mysql.log" or "oracle.log"
 
