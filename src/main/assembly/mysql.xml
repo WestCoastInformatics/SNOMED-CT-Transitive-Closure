@@ -10,6 +10,8 @@
       <excludes>
         <exclude>rf1/**</exclude>
         <exclude>**/*oracle*</exclude>
+        <exclude>**/*psql*</exclude>
+        <exclude>**/*postgres*</exclude>
         <exclude>**/*.ctl</exclude>
       </excludes>
       <filtered>true</filtered>

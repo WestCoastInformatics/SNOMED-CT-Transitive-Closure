@@ -7,7 +7,7 @@ using the database load scripts you can also find at the URL above.  This is
 important because it creates a view that allows for denormalization of preferred
 concept names, thus making the transitive closure table more useful.
 
-Also, the load scripts for Oracle and MySQL both assume that the transitive closure
+Also, the load scripts for MySQL, Postgres, and Oracle assume that the transitive closure
 file has been created in a specific location with a particular filename. See the
 default settings at the top of the transitive closure scripts for more info.
 
@@ -21,11 +21,14 @@ Installation
 1.  Download the database loader zip file from the http://www.westcoastinformatics.com/resources.html website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
 	For example:
 		* MySQL
-			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190131.zip" file
-			> US-Edition, use the "snomed-us-transitive-closure-mysql.20190301.zip" file
+			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190731.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-mysql.20190901.zip" file
+		* Postgres
+			> SNOMED-CORE, use the "snomed-transitive-closure-postgres.20190731.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-postgres.20190901.zip" file
 		* Oracle
-			> SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190131.zip" file
-			> US-Edition, use the "snomed-us-transitive-closure-oracle.20190301.zip" file
+			> SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190731.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-oracle.20190901.zip" file
 
 2.  Unzip the contents of the zip file into a 'data' folder
 
@@ -56,11 +59,13 @@ Installation
 	In a text editor, open the temp-folder's appropriate "populate" script in a text editor as defined by your platform and database. 
 	* For example:
 		- Windows
-			> MySQL  - use the "populate_mysql_db_tc.bat" script
-			> Oracle - use the "populate_oracle_db_tc.bat" script
+			> MySQL    - use the "populate_mysql_db_tc.bat" script
+			> Postgres - use the "populate_postgres_db_tc.bat" script
+			> Oracle   - use the "populate_oracle_db_tc.bat" script
 		- Linux/Unix/MacOS
-			> MySQL  - use the "populate_mysql_db_tc.sh" script
-			> Oracle - use the "populate_oracle_db_tc.sh" script
+			> MySQL    - use the "populate_mysql_db_tc.sh" script
+			> Postgres - use the "populate_postgres_db_tc.sh" script
+			> Oracle   - use the "populate_oracle_db_tc.sh" script
 			
 	* Configure settings at the top of the "populate" script for your environment
 		- user  is your database's username
@@ -68,5 +73,4 @@ Installation
 		- tns_name or db_name is the database's schema which was used in the prerequisite step
 
 8.	Execute the "populate" script
-	* Note: a complete log file will appear as "mysql.log" or "oracle.log"
-
+	* Note: a complete log file will appear as "mysql.log", "postgres.log", or "oracle.log"

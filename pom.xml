@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <!-- Project description -->
   <groupId>com.wcinformatics</groupId>
   <artifactId>snomed-transitive-closure</artifactId>
-  <version>1.1.0-SNAPSHOT</version>
+  <version>1.2.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>SNOMED Transitive closure builder and database Load Scripts</name>
   <url>http://www.wcinformatics.com/resources.html</url>
@@ -28,7 +29,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <editionVersion>20190131</editionVersion>
+        <editionVersion>20190731</editionVersion>
         <editionType>Core</editionType>
         <editionLabel>INT</editionLabel>
       </properties>
@@ -36,7 +37,7 @@
     <profile>
       <id>US</id>
       <properties>
-        <editionVersion>20190301</editionVersion>
+        <editionVersion>20190901</editionVersion>
         <editionType>National</editionType>
         <editionLabel>US1000124</editionLabel>
       </properties>
@@ -75,7 +76,7 @@
                 <descriptor>src/main/assembly/tc.xml</descriptor>
               </descriptors>
               <appendAssemblyId>false</appendAssemblyId>
-              <finalName>${artifactId}-tc.${editionVersion}</finalName>
+              <finalName>${project.artifactId}-tc.${editionVersion}</finalName>
               <formats>
                 <format>zip</format>
               </formats>
@@ -99,6 +100,23 @@
             </configuration>
           </execution>
           <execution>
+            <id>postgres</id>
+            <phase>package</phase>  <!-- bind to the packaging phase -->
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>src/main/assembly/postgres.xml</descriptor>
+              </descriptors>
+              <appendAssemblyId>false</appendAssemblyId>
+              <finalName>${project.artifactId}-postgres.${editionVersion}</finalName>
+              <formats>
+                <format>zip</format>
+              </formats>
+            </configuration>
+          </execution>
+          <execution>
             <id>oracle</id>
             <phase>package</phase>  <!-- bind to the packaging phase -->
             <goals>
@@ -109,7 +127,7 @@
                 <descriptor>src/main/assembly/oracle.xml</descriptor>
               </descriptors>
               <appendAssemblyId>false</appendAssemblyId>
-              <finalName>${artifactId}-oracle.${editionVersion}</finalName>
+              <finalName>${project.artifactId}-oracle.${editionVersion}</finalName>
               <formats>
                 <format>zip</format>
               </formats>

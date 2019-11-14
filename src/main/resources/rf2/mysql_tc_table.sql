@@ -5,7 +5,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 
--- Concept file.
+-- Transitive Closure table.
 DROP TABLE IF EXISTS transitiveclosure;
 CREATE TABLE transitiveclosure (
     superTypeId NUMERIC(18) UNSIGNED NOT NULL,

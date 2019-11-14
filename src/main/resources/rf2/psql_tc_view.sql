@@ -1,7 +1,5 @@
--- Show warnings after every statement.
-\W
 
--- transitive closure table
+-- transitive closure table with names
 -- NOTE: this assumes conceptpreferredname has already been created 
 --       via the standard RF2 load scripts
 DROP VIEW IF EXISTS transitiveclosurewithnames;
@@ -13,6 +11,7 @@ FROM transitiveclosure a,
     conceptpreferredname cpn2
 WHERE a.superTypeId = cpn1.conceptId
   AND a.subTypeId = cpn2.conceptId;
+
 
 
 
