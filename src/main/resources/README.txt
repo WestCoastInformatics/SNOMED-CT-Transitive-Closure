@@ -11,7 +11,7 @@ Important Notes
 Key Features
 ------------
 * Builds transitive closure table from RF2 snapshot, inferred, SNOMED file.
-* Support for MySQL, Postgres, and Oracle
+* Support for Postgres, Oracle, MySQL (and MariaDB)
 * Views with denormalized concept preferred names
 
 Developer Notes
