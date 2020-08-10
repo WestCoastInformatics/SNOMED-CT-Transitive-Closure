@@ -1,12 +1,11 @@
 #!/bin/sh -f
 
-#
 # Database connection parameters
 # Please edit these variables to reflect your environment
-#   - Tested on Windows with "Git Bash" as a shell
-#   - and MYSQL_HOME="/c/Program Files/MySQL/MySQL Server 5.6"
+#   - Tested with docker mysql 5.6, 5.7, 8.0 (using docker mysql server and client)
+#     - host=host.docker.internal
 #
-MYSQL_HOME=/usr
+host=
 user=root
 password=admin
 db_name=snomed
@@ -27,14 +26,17 @@ echo "db_name =    $db_name" >> mysql.log 2>&1
 if [ "${password}" != "" ]; then
   password="-p${password}"
 fi
+if [ "${host}" != "" ]; then
+  host="-h ${host}"
+fi
 
 echo "    Create and load tables ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user $password --local-infile $db_name < mysql_tc_table.sql >> mysql.log 2>&1
+mysql -vvv $host -u $user $password --local-infile $db_name < mysql_tc_table.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 
 if [ $ef -ne 1 ]; then
 echo "    Create views ... `/bin/date`" >> mysql.log 2>&1
-"$MYSQL_HOME/bin/mysql" -vvv -u $user $password $db_name < mysql_tc_view.sql >> mysql.log 2>&1
+mysql -vvv $host -u $user $password $db_name < mysql_tc_view.sql >> mysql.log 2>&1
 if [ $? -ne 0 ]; then ef=1; fi
 fi
 

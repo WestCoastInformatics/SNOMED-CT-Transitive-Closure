@@ -1,13 +1,14 @@
 #!/bin/sh -f
 
-
 #
 # Database connection parameters
 # Please edit these variables to reflect your environment
+#   - Tested with docker postgres 9, 10, 11, 12 (using docker postgres server and client)
+#     - PGHOST=host.docker.internal
 #   - Tested on Windows with "Git Bash" as a shell
-#   - and psql in the path, use the alias if needed
+#   - and psql in the path
 #
-#alias psql="C:/PostgreSQL/pg96/bin/psql.exe"
+export PGHOST=localhost
 export PGUSER=postgres
 export PGPASSWORD=
 export PGDATABASE=snomed
