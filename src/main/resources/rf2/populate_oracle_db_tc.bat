@@ -5,7 +5,7 @@
 set ORACLE_HOME=e.g. C:\app\oracle\product\12.1.0\dbhome_1
 set user=snomed
 set password=snomed
-set tns_name=global
+set tns_name=ORCLCDB
 set NLS_LANG=AMERICAN_AMERICA.UTF8
 
 del oracle.log

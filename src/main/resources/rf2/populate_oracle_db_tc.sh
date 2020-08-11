@@ -4,10 +4,11 @@
 # Database connection parameters
 # Please edit these variables to reflect your environment
 #
-export ORACLE_HOME=e.g. /app/oracle/product/12.1.0/dbhome_1
+# Set if necessary
+#export ORACLE_HOME=/app/oracle/product/12.1.0/dbhome_1
 user=snomed
 password=snomed
-tns_name=global
+tns_name=ORCLCDB
 export NLS_LANG=AMERICAN_AMERICA.UTF8
 
 /bin/rm -f oracle.log
