@@ -34,8 +34,8 @@ END;
 -- Transitive closure table
 EXECUTE drop_table('transitiveclosure');
 CREATE TABLE transitiveclosure (
-    superTypeId NUMERIC(18) NOT NULL,
-    subTypeId NUMERIC(18) NOT NULL,
+    superTypeId NUMERIC(20) NOT NULL,
+    subTypeId NUMERIC(20) NOT NULL,
     depth INTEGER NOT NULL,
     PRIMARY KEY (superTypeId, subTypeId),
     FOREIGN KEY (superTypeId) REFERENCES concept(id),

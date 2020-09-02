@@ -2,8 +2,8 @@
 -- Transitive closure table.
 DROP TABLE IF EXISTS transitiveclosure CASCADE;
 CREATE TABLE transitiveclosure (
-    superTypeId NUMERIC(18) NOT NULL,
-    subTypeId NUMERIC(18) NOT NULL,
+    superTypeId NUMERIC(20) NOT NULL,
+    subTypeId NUMERIC(20) NOT NULL,
     depth INT NOT NULL,
     PRIMARY KEY (superTypeId, subTypeId),
     FOREIGN KEY (superTypeId) REFERENCES concept(id),

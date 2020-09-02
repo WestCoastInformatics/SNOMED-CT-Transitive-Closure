@@ -8,8 +8,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Transitive Closure table.
 DROP TABLE IF EXISTS transitiveclosure;
 CREATE TABLE transitiveclosure (
-    superTypeId NUMERIC(18) UNSIGNED NOT NULL,
-    subTypeId NUMERIC(18) UNSIGNED NOT NULL,
+    superTypeId NUMERIC(20) NOT NULL,
+    subTypeId NUMERIC(20) NOT NULL,
     depth INT NOT NULL,
     PRIMARY KEY (superTypeId, subTypeId),
     FOREIGN KEY (superTypeId) REFERENCES concept(id),
