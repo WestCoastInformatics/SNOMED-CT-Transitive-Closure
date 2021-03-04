@@ -21,14 +21,14 @@ Installation
 1.  Download the database loader zip file from the http://www.westcoastinformatics.com/resources.html website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
 	For example:
 		* MySQL
-			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.20190731.zip" file
-			> US-Edition, use the "snomed-us-transitive-closure-mysql.20190901.zip" file
+			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.YYYYMMDD.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-mysql.YYYYMMDD.zip" file
 		* Postgres
-			> SNOMED-CORE, use the "snomed-transitive-closure-postgres.20190731.zip" file
-			> US-Edition, use the "snomed-us-transitive-closure-postgres.20190901.zip" file
+			> SNOMED-CORE, use the "snomed-transitive-closure-postgres.YYYYMMDD.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-postgres.YYYYMMDD.zip" file
 		* Oracle
-			> SNOMED-CORE, use the "snomed-transitive-closure-oracle.20190731.zip" file
-			> US-Edition, use the "snomed-us-transitive-closure-oracle.20190901.zip" file
+			> SNOMED-CORE, use the "snomed-transitive-closure-oracle.YYYYMMDD.zip" file
+			> US-Edition, use the "snomed-us-transitive-closure-oracle.YYYYMMDD.zip" file
 
 2.  Unzip the contents of the zip file into a 'data' folder
 
