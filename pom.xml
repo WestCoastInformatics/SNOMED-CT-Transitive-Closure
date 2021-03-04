@@ -29,7 +29,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <editionVersion>20200731</editionVersion>
+        <editionVersion>20210131</editionVersion>
         <editionType>Core</editionType>
         <editionLabel>INT</editionLabel>
       </properties>
@@ -37,7 +37,7 @@
     <profile>
       <id>US</id>
       <properties>
-        <editionVersion>20200901</editionVersion>
+        <editionVersion>20210301</editionVersion>
         <editionType>National</editionType>
         <editionLabel>US1000124</editionLabel>
       </properties>
