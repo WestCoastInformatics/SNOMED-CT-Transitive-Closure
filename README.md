@@ -28,12 +28,12 @@ concept names, thus making the transitive closure table more useful.
 
 Installation
 ------------
-* See HOWTO.txt file to understand how to load the transitive closure table into a database
+* See [HOWTO.txt](src/main/resources/HOWTO.txt) file to understand how to load the transitive closure table into a database
 
 See Also
 --------
-src/main/resources/LICENSE.txt
-src/main/resources/README.txt
-src/main/resources/HOWTO.txt
+* [src/main/resources/LICENSE.txt](src/main/resources/LICENSE.txt)
+* [src/main/resources/README.txt](src/main/resources/README.txt)
+* [src/main/resources/HOWTO.txt](src/main/resources/HOWTO.txt)
 
    
