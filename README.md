@@ -36,7 +36,8 @@ See Also
 * [src/main/resources/README.txt](src/main/resources/README.txt)
 * [src/main/resources/HOWTO.txt](src/main/resources/HOWTO.txt)
 * [src/main/perl/transitiveClosure.pl](src/main/perl/transitiveClosure.pl) - this is just a pure Perl script for generating transitive closure from a SNOMED relationships file.
-    $ ./transitiveClosure.pl
-    This script has the following usage:
-    transitiveClosure.pl <relsFile> <outputFile>
-   
+```
+$ ./transitiveClosure.pl
+This script has the following usage:
+transitiveClosure.pl <relsFile> <outputFile>
+```   
