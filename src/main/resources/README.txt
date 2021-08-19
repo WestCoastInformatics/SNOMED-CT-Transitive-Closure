@@ -16,4 +16,4 @@ Key Features
 
 Developer Notes
 ---------------
-https://github.com/bcarlsenca/SNOMED-CT-Transitive-Closure.git
+https://github.com/WestCoastInformatics/SNOMED-CT-Transitive-Closure.git
