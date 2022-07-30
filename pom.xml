@@ -29,7 +29,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <editionVersion>20220131</editionVersion>
+        <editionVersion>20220731</editionVersion>
         <editionType>Core</editionType>
         <editionLabel>INT</editionLabel>
       </properties>
