@@ -5,8 +5,8 @@
 
 :: Configure defaults for RF2
 set relsFile=Snapshot/Terminology/sct2_Relationship_Snapshot_${editionLabel}_${editionVersion}.txt
+set historyFile=Snapshot/Refset/Content/der2_cRefset_AssociationSnapshot_${editionLabel}_${editionVersion}.txt
 set outputFile=Snapshot/Terminology/sct2_TransitiveClosure_Snapshot_${editionLabel}_${editionVersion}.txt
-
 
 del transitive_closure.log
 echo. > transitive_closure.log
@@ -23,7 +23,7 @@ set error=0
 ::       or edit it to use the full path to java executable
 echo     Build transitive closure table >> transitive_closure.log 2>&1
 del /Q %outputFile%
-java -cp . com.wcinformatics.snomed.TransitiveClosureGenerator %relsFile% %outputFile%
+java -cp . com.wcinformatics.snomed.TransitiveClosureGenerator %relsFile% %historyFile% %outputFile%
 IF %ERRORLEVEL% NEQ 0 (set error=1
 goto trailer)
 
