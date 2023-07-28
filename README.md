@@ -5,7 +5,7 @@ inferred SNOMED CT relationships file.  Additionally includes scripts
 to create and populate a Postgres, Oracle, or MySQL (and MariaDB) database 
 with this data.  To download a package built for the latest US or International 
 edition, visit:
-http://www.westcoastinformatics.com/resources.html
+https://www.westcoastinformatics.com/products/db-load-scripts
 
 *New feature: a "depth" flag is now computed as well where 0 means "self",
 1 means "child", and >1 means "non-child descendant".  This enables asking
