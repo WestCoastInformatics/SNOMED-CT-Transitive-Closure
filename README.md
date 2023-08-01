@@ -1,9 +1,9 @@
 SNOMED CT TRANSITIVE CLOSURE
 ============================
-Code to build a transitive closure table from an RF2, snapshot, 
-inferred SNOMED CT relationships file.  Additionally includes scripts 
-to create and populate a Postgres, Oracle, or MySQL (and MariaDB) database 
-with this data.  To download a package built for the latest US or International 
+Code to build a transitive closure table from an RF2, snapshot,
+inferred SNOMED CT relationships file.  Additionally includes scripts
+to create and populate a Postgres, Oracle, or MySQL (and MariaDB) database
+with this data.  To download a package built for the latest US or International
 edition, visit:
 http://www.westcoastinformatics.com/resources.html
 
@@ -14,10 +14,10 @@ queries about "child of", "descendant of", and "descendant or self of".
 Minimum Specification
 ---------------------
 - Java 1.7
-- MYSQL v5.7.+, MySQL v8.+, MariaDB 10.+
-  - MySQL v8 requires the server to run with "--local_infile=ON"  
-- Oracle v11.+
-- Postgres v10.+, v11.+, v12.+, v13.+
+- MYSQL v5.7.+, MySQL v8.+, MariaDB 10.+, MariaDB 11.+
+  - MySQL v8 requires the server to run with "--local_infile=ON"
+- Oracle v12.+
+- Postgres v11.+, v12.+, v13.+, v14.+, v15.+
 
 Prerequisites
 -------------
@@ -40,4 +40,4 @@ See Also
 $ ./transitiveClosure.pl
 This script has the following usage:
 transitiveClosure.pl <relsFile> <outputFile>
-```   
+```
