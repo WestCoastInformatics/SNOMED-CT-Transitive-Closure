@@ -13,8 +13,8 @@ queries about "child of", "descendant of", and "descendant or self of".
 
 Minimum Specification
 ---------------------
-- Java 1.7
-- MYSQL v5.7.+, MySQL v8.+, MariaDB 10.+, MariaDB 11.+
+- Java 1.8
+- MYSQL v5.7.+, MySQL v8.+, MariaDB 10.+
   - MySQL v8 requires the server to run with "--local_infile=ON"
 - Oracle v12.+
 - Postgres v11.+, v12.+, v13.+, v14.+, v15.+
