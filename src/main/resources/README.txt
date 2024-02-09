@@ -1,19 +1,5 @@
-Welcome to SNOMED CT transitive closure and database load scripts
-http://www.wcinformatics.com/resources.html
+################################################################################
+THIS PROJECT HAS BEEN DEPRECATED AND FUNCTIONALITY HAS BEEN MOVED
+TO THE FOLLOWING REPO: https://github.com/bcarlsenca/SNOMED-DB-Load-Scripts.git
+################################################################################
 
-Go to the above link for documentation, and additional downloads.
-
-Important Notes
----------------
-* This code is configured to work with the ${editionVersion}
-  SNOMEDCT ${editionLabel} Edition.
-
-Key Features
-------------
-* Builds transitive closure table from RF2 snapshot, inferred, SNOMED file.
-* Support for Postgres, Oracle, MySQL (and MariaDB)
-* Views with denormalized concept preferred names
-
-Developer Notes
----------------
-https://github.com/WestCoastInformatics/SNOMED-CT-Transitive-Closure.git

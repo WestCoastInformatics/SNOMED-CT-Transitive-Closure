@@ -1,3 +1,8 @@
+################################################################################
+THIS PROJECT HAS BEEN DEPRECATED AND FUNCTIONALITY HAS BEEN MOVED
+TO THE FOLLOWING REPO: https://github.com/bcarlsenca/SNOMED-DB-Load-Scripts.git
+################################################################################
+
 SNOMED CT TRANSITIVE CLOSURE
 ============================
 Code to build a transitive closure table from an RF2, snapshot,
