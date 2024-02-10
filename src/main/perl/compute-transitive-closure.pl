@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Copyright 2022 West Coast Informatics, Inc
+# Copyright 2024 West Coast Informatics, Inc
 #
 # Computes transitive closure from a snapshot inferred RF2 relationships file.
 #
@@ -14,6 +14,7 @@ our $isaRel = "116680003";
 our $root = "138875005";
 our $history = "";
 our $force = 0;
+our $self = 1;
 
 #
 # Check options
@@ -33,6 +34,9 @@ while (@ARGV) {
     next;
   } elsif ($arg eq "--history-max") {
     $history = "max";
+    next;
+  } elsif ($arg eq "--noself") {
+    $self = 0;
     next;
   } elsif ($arg eq "--force") {
     $force = 1;
@@ -106,6 +110,7 @@ print "Starting ...", scalar(localtime),"\n";
 print "------------------------------------------------------------\n";
 print "Isa rel      : $isaRel\n";
 print "Rels file    : $relsFile\n";
+print "Self         : $self\n";
 print "Output file  : $outputFile\n";
 if ($history) {
   print "History      : $history\n";
@@ -138,19 +143,22 @@ foreach $code (keys %codes) {
     $ct++;
     
     # short circuit for leaf nodes
-    if (!$parChd{$code}) {
+    if (!$parChd{$code} && $self) {		
         print $OUT "$code\t$code\t0$eol";
     }
 
     # otherwise, gather descendants
-  else {
+    else {
         %seen = ();
         my %descs = getDescendants($code, 1);
         my $desc;
         foreach $desc (keys %descs) {
+			if (!$self && !($descs{$desc}-1)) {
+				next;
+			}
             print $OUT "$code\t$desc\t".($descs{$desc}-1)."$eol";
         }
-  }
+    }
   
     if ($ct % 10000 == 0) {
         print "      $ct codes processed ...", scalar(localtime),"\n";
@@ -175,8 +183,9 @@ exit 0;
 #
 sub PrintUsage {
 
-        print qq{ This script has the following usage:
-   compute-transitive-closure.pl [--help] [--force] [--history-{min,mod,max}] <relsFile>
+        print qq{
+Usage: compute-transitive-closure.pl [--help] [--force] [--history-{min,mod,max}] <relsFile>
+  e.g. compute-transitive-closure.pl --history-min --noself
 };
 }
 
