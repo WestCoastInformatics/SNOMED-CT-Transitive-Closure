@@ -28,6 +28,9 @@ public class TransitiveClosureGenerator {
   /** The relationships file. */
   private String relationshipsFile;
 
+  /** The history file. */
+  private String historyFile;
+
   /** The output file. */
   private String outputFile;
 
@@ -42,8 +45,8 @@ public class TransitiveClosureGenerator {
 
   /** The rf1 inactive concepts. */
   private String[] rf1InactiveConcepts = new String[] {
-      "362955004", "363660007", "363661006", "363662004", "363663009",
-      "363664003", "370126003", "443559000"
+      "362955004", "363660007", "363661006", "363662004", "363663009", "363664003", "370126003",
+      "443559000"
   };
 
   /**
@@ -60,6 +63,15 @@ public class TransitiveClosureGenerator {
    */
   public void setRelationshipsFile(String relationshipsFile) {
     this.relationshipsFile = relationshipsFile;
+  }
+
+  /**
+   * Sets the history file.
+   *
+   * @param historyFile the history file
+   */
+  public void setHistoryFile(String historyFile) {
+    this.historyFile = historyFile;
   }
 
   /**
@@ -114,24 +126,32 @@ public class TransitiveClosureGenerator {
     if (relationshipsFile == null) {
       throw new Exception("Unexpected null relationships file.");
     }
+    if (historyFile == null) {
+      throw new Exception("Unexpected null history file.");
+    }
+
     Logger.getLogger(this.getClass().getName()).log(Level.INFO,
         "  relationshipsFile = " + relationshipsFile);
+    Logger.getLogger(this.getClass().getName()).log(Level.INFO, "  historyFile = " + historyFile);
 
     if (outputFile == null) {
       throw new Exception("Unexpected null output file.");
     }
-    Logger.getLogger(this.getClass().getName()).log(Level.INFO,
-        "  outputFile = " + outputFile);
+    Logger.getLogger(this.getClass().getName()).log(Level.INFO, "  outputFile = " + outputFile);
 
     File rf = new File(relationshipsFile);
     if (!rf.exists()) {
-      throw new Exception("relationships file does not exist.");
+      throw new Exception("relationships file does not exist = " + relationshipsFile);
+    }
+
+    File hf = new File(historyFile);
+    if (!hf.exists()) {
+      throw new Exception("history file does not exist = " + historyFile);
     }
 
     File of = new File(outputFile);
     if (of.exists()) {
-      throw new Exception(
-          "output file already exists. Please clean it up first.");
+      throw new Exception("output file already exists. Please remove it first.");
     }
 
     //
@@ -151,12 +171,10 @@ public class TransitiveClosureGenerator {
     line = in.readLine();
     boolean rf1 = false;
     if (line.startsWith("RELATIONSHIPID")) {
-      Logger.getLogger(this.getClass().getName()).log(Level.INFO,
-          "    file format = RF1");
+      Logger.getLogger(this.getClass().getName()).log(Level.INFO, "    file format = RF1");
       rf1 = true;
     } else if (line.startsWith("id")) {
-      Logger.getLogger(this.getClass().getName()).log(Level.INFO,
-          "    file format = RF2");
+      Logger.getLogger(this.getClass().getName()).log(Level.INFO, "    file format = RF2");
     } else {
       throw new Exception("Unknown file format, not RF1 or RF2.");
     }
@@ -172,8 +190,7 @@ public class TransitiveClosureGenerator {
       if (rf1) {
 
         if (tokens.length != 7) {
-          throw new Exception("Unexpected number of fields in rels file "
-              + tokens.length);
+          throw new Exception("Unexpected number of fields in rels file " + tokens.length);
         }
         // Skip non isa
         if (!isaRel.equals(tokens[2])) {
@@ -202,8 +219,7 @@ public class TransitiveClosureGenerator {
       else {
 
         if (tokens.length != 10) {
-          throw new Exception("Unexpected number of fields in rels file "
-              + tokens.length);
+          throw new Exception("Unexpected number of fields in rels file " + tokens.length);
         }
         // Skip non isa
         if (!isaRel.equals(tokens[7])) {
@@ -231,7 +247,7 @@ public class TransitiveClosureGenerator {
       // Add to "all"
       all.add(par);
       all.add(chd);
-      
+
       // Handle par/chd
       if (!parChd.containsKey(par)) {
         parChd.put(par, new HashSet<String>());
@@ -241,8 +257,7 @@ public class TransitiveClosureGenerator {
 
       ct++;
     }
-    Logger.getLogger(this.getClass().getName()).log(Level.INFO,
-        "      ct = " + ct);
+    Logger.getLogger(this.getClass().getName()).log(Level.INFO, "      ct = " + ct);
 
     //
     // Write transitive closure file
@@ -253,15 +268,14 @@ public class TransitiveClosureGenerator {
     out.print("superTypeId\tsubTypeId\tdepth\r\n");
     ct = 0;
     for (String code : all) {
-      Logger.getLogger(this.getClass().getName()).log(Level.FINE,
-          "      compute for " + code);
+      Logger.getLogger(this.getClass().getName()).log(Level.FINE, "      compute for " + code);
 
       if (root.equals(code)) {
         continue;
       }
       ct++;
-      Map<String,Integer> descs = getDescendants(code, new HashSet<String>(), parChd, 0);
-      for (Map.Entry<String,Integer> desc : descs.entrySet()) {
+      Map<String, Integer> descs = getDescendants(code, new HashSet<String>(), parChd, 0);
+      for (Map.Entry<String, Integer> desc : descs.entrySet()) {
         Logger.getLogger(this.getClass().getName()).log(Level.FINEST,
             code + "\t" + desc.getKey() + "\t" + desc.getValue() + "\r\n");
         out.print(code + "\t" + desc.getKey() + "\t" + desc.getValue() + "\r\n");
@@ -311,8 +325,7 @@ public class TransitiveClosureGenerator {
 
     // Iterate through children, mark as descendant and recursively call
     for (String chd : children) {
-      Map<String, Integer> descendantsOfChild =
-          getDescendants(chd, seen, parChd, depth + 1);
+      Map<String, Integer> descendantsOfChild = getDescendants(chd, seen, parChd, depth + 1);
       // add all recursively gathered descendants at this level
       descendants.putAll(descendantsOfChild);
     }
@@ -331,7 +344,8 @@ public class TransitiveClosureGenerator {
     try {
       TransitiveClosureGenerator generator = new TransitiveClosureGenerator();
       generator.setRelationshipsFile(argv[0]);
-      generator.setOutputFile(argv[1]);
+      generator.setHistoryFile(argv[1]);
+      generator.setOutputFile(argv[2]);
       generator.compute();
     } catch (Throwable t) {
       t.printStackTrace();

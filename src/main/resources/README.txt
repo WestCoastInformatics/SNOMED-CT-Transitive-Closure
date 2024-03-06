@@ -1,5 +1,5 @@
 Welcome to SNOMED CT transitive closure and database load scripts
-http://www.wcinformatics.com/resources.html
+https://www.westcoastinformatics.com/products/db-load-scripts
 
 Go to the above link for documentation, and additional downloads.
 

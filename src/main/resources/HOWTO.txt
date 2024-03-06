@@ -12,13 +12,13 @@ file has been created in a specific location with a particular filename. See the
 default settings at the top of the transitive closure scripts for more info.
 
 The database load script tooling available from 
-  http://www.westcoastinformatics.com/resources.html has already been run and the
+  https://www.westcoastinformatics.com/products/db-load-scripts has already been run and the
   database loaded.  This is "add on" functionality to an existing load.
 
   
 Installation
 ------------
-1.  Download the database loader zip file from the http://www.westcoastinformatics.com/resources.html website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
+1.  Download the database loader zip file from the https://www.westcoastinformatics.com/products/db-load-scripts website. Select the appropriate database-version pair (i.e. oracle-US Edition). Depending on your database and edition, identify the appropriate target's zip file.
 	For example:
 		* MySQL
 			> SNOMED-CORE, use the "snomed-transitive-closure-mysql.YYYYMMDD.zip" file
